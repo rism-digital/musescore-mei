@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "Verovio Converter"
+version = "1.0"
+description = ""
+authors = ["Andrew Hankinson <andrew.hankinson@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+verovio = "^3.14.0"
+sanic = "^22.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
