@@ -15,6 +15,15 @@ directory that the user chooses.
 You can use the default conversion server, or, if you want to run your own, you
 can install it and set it up, and change it in the plugin.
 
+## Installing the Plugin
+
+**Note:** The plugin currently only works with MuseScore 3. The plugin system
+in MuseScore 4 is broken right now. 
+
+The plugin code can be found in the `plugin/export_mei` folder. Follow the
+[instructions on the MuseScore website](https://musescore.org/en/handbook/3/plugins#installation) 
+for installing plugins.
+
 ## Installing the Export Server
 
 The export server is written in Python. The easiest way to get started is
