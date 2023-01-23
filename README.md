@@ -34,13 +34,18 @@ After downloading the source code for this project, run:
     $ poetry install
 
 This should install the dependencies. From there you can run a development version
-of the server with:
+of the server inside a virtual environment with:
 
+    $ poetry shell
     $ sanic export_server.server:app --port 8009 --fast --dev
+
+The export endpoint will then be `http://localhost:8009/mei`
 
 The server itself is very simple, so you can also use the code
 in the export server to write your own version using tools you know.
 
 To support the plugin's request format, your own server should use the
-`multipart/form-data` upload format in a `POST` request. 
+`multipart/form-data` upload format in a `POST` request. If you don't want
+to use the Python server and have your own favourite language, please feel
+free to use the Python server as inspiration. 
 
