@@ -32,6 +32,7 @@ MuseScore {
     Settings {
         id: settings
         category: "Plugin-MEIexport"
+        property alias exportServer: exportServer.text
         property alias exportDirectory: exportDirectory.text
         property alias basic: meiBasicCheck.checked
     }
@@ -82,7 +83,7 @@ MuseScore {
         TextField {
             Layout.preferredWidth: 250
             id: exportServer
-            text: "http://localhost:8009/mei"
+            text: settings.exportServer ? settings.exportServer : "http://localhost:8009/mei"
             enabled: true
           //                //color: sysActivePalette.text
           //                color: rdbImport.checked ? sysDisabledPalette.shadow : sysDisabledPalette.mid //sysDisabledPalette.buttonText
