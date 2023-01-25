@@ -4,7 +4,6 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import Qt.labs.folderlistmodel 2.1
-//import Qt.labs.settings 1.0
 import Qt.labs.settings 1.0
 
 import MuseScore 3.0
@@ -85,8 +84,6 @@ MuseScore {
             id: exportServer
             text: settings.exportServer ? settings.exportServer : "https://mscore-plugin.verovio.org/mei"
             enabled: true
-          //                //color: sysActivePalette.text
-          //                color: rdbImport.checked ? sysDisabledPalette.shadow : sysDisabledPalette.mid //sysDisabledPalette.buttonText
         }
 
         Button {
