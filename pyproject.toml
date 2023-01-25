@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Verovio Converter"
+name = "MuseScore Plugin Export"
 version = "1.0"
 description = ""
 authors = ["Andrew Hankinson <andrew.hankinson@gmail.com>"]
