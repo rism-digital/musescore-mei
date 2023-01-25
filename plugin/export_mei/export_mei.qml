@@ -83,7 +83,7 @@ MuseScore {
         TextField {
             Layout.preferredWidth: 250
             id: exportServer
-            text: settings.exportServer ? settings.exportServer : "http://localhost:8009/mei"
+            text: settings.exportServer ? settings.exportServer : "https://mscore-plugin.verovio.org/mei"
             enabled: true
           //                //color: sysActivePalette.text
           //                color: rdbImport.checked ? sysDisabledPalette.shadow : sysDisabledPalette.mid //sysDisabledPalette.buttonText
