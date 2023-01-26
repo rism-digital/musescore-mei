@@ -49,3 +49,15 @@ To support the plugin's request format, your own server should use the
 to use the Python server and have your own favourite language, please feel
 free to use the Python server as inspiration. 
 
+## Licenses
+
+The code in this repo has two licenses. The first is for the MuseScore Plugin,
+which was based on the built-in [ABC exporter plugin](https://musescore.org/en/project/abc-export), 
+but modified quite a bit. The ABC plugin is licensed under the GPL2 license, 
+so consequently the MEI Export License is also released under GPL2.
+
+For the server code, this is released under a permissive MIT license. Feel free to use,
+modify, or do whatever you like with this code.
+
+The license notifications for each can be found in the respective directories.
+
