@@ -15,7 +15,6 @@
 //  along with this program; if not, write to the Free Software
 //  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 //=============================================================================
-
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Dialogs 1.2
@@ -39,17 +38,22 @@ MuseScore {
     height: 400
 
     onRun: {
-        directorySelectDialog.folder = ((Qt.platform.os == "windows")? "file:///" : "file://") + exportDirectory.text;
+        directorySelectDialog.folder = ((Qt.platform.os == "windows") ? "file:///" : "file://") + exportDirectory.text;
+        exportServerTextField.text = settings.exportServer ? settings.exportServer : "https://mscore-plugin.verovio.org/mei";
+
     }
 
     Component.onDestruction: {
         settings.exportDirectory = exportDirectory.text
     }
 
+     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
+     property color system_text_color: myPalette.text    
+    
     Settings {
         id: settings
         category: "Plugin-MEIexport"
-        property alias exportServer: exportServer.text
+        property alias exportServer: exportServerTextField.text
         property alias exportDirectory: exportDirectory.text
         property alias basic: meiBasicCheck.checked
     }
@@ -95,12 +99,13 @@ MuseScore {
 
         Label {
             text: qsTr("Export server") + ":"
+            color: system_text_color
         }
 
         TextField {
             Layout.preferredWidth: 250
-            id: exportServer
-            text: settings.exportServer ? settings.exportServer : "https://mscore-plugin.verovio.org/mei"
+            id: exportServerTextField
+            text: ""
             enabled: true
         }
 
@@ -118,6 +123,7 @@ MuseScore {
         Label {
             id: exportDirectory
             text: ""
+            color: system_text_color
         }
 
         CheckBox {
@@ -125,6 +131,16 @@ MuseScore {
             Layout.columnSpan: 2
             checked: false
             text: "Export MEI Basic"
+            contentItem: Text {
+                leftPadding: meiBasicCheck.indicator && !meiBasicCheck.mirrored ? meiBasicCheck.indicator.width + meiBasicCheck.spacing : 0
+                rightPadding: meiBasicCheck.indicator && meiBasicCheck.mirrored ? meiBasicCheck.indicator.width + meiBasicCheck.spacing : 0
+
+                text: meiBasicCheck.text
+                color: system_text_color
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignRight
+            }
         }
 
         Button {
@@ -137,7 +153,7 @@ MuseScore {
             }
             onClicked: {
                 exportButton.text = qsTranslate("Ms::MuseScore", "Exporting…");
-                statusText.text = statusText.text + "Starting export using " + exportServer.text + '\n'
+                statusText.text = statusText.text + "Starting export using " + exportServerTextField.text + '\n'
                 // Create MusicXML
                 tempXMLFile.source = tempXMLFile.tempPath() + "//" + "tempExport.xml";
                 writeScore(curScore, tempXMLFile.source, "xml");
@@ -155,7 +171,7 @@ MuseScore {
                 body += '\r\n\r\n';
                 body += '--' + boundary + '--';
 
-                var transformationServer = exportServer.text;
+                var transformationServer = exportServerTextField.text;
                 if (meiBasicCheck.checked)
                 {
                     statusText.text = statusText.text + "Producing MEI Basic\n"
@@ -186,7 +202,7 @@ MuseScore {
                         // pluginDialog.parent.Window.window.close();
                     }
                 });
-                request.open("POST", exportServer.text, true);
+                request.open("POST", exportServerTextField.text, true);
                 request.setRequestHeader("content-type", 'multipart/form-data; boundary=' + boundary + '; charset=UTF-8');
                 request.send(body);
                 statusText.text = statusText.text + "File uploaded\n"
