@@ -115,6 +115,10 @@ MuseScore {
             onClicked: {
                 directorySelectDialog.open();
             }
+            contentItem: Text {
+                text: parent.text
+                verticalAlignment: Text.AlignVCenter
+            }
             background: Rectangle {
                 color: parent.down ? "#bbbbbb" :
                         (parent.hovered ? "#d6d6d6" : "#f6f6f6")
@@ -147,6 +151,10 @@ MuseScore {
             id: exportButton
             Layout.columnSpan: 2
             text: qsTranslate("ExportDialog", "Export")
+            contentItem: Text {
+                text: parent.text
+                verticalAlignment: Text.AlignVCenter
+            }
             background: Rectangle {
                 color: parent.down ? "#bbbbbb" :
                         (parent.hovered ? "#d6d6d6" : "#f6f6f6")
