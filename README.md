@@ -1,3 +1,7 @@
+**MuseScore 4.2 now includes support for MEI, so this plugin is no longer supported.**
+
+If you are using an older version of MuseScore, you can still run this code locally.
+
 # MuseScore MEI Export Plugin
 
 The MuseScore MEI Export plugin will export MuseScore documents to
